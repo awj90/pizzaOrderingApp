@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View 1</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>Order Delivery Details</h1>
+    <form
+      method="POST"
+      action="#"
+      data-th-action="@{/pizza/order}"
+      data-th-object="${order}"
+    >
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input
+              type="text"
+              placeholder="Your name here"
+              data-th-field="*{name}"
+            />
+          </td>
+        </tr>
+        <tr data-th-if="${#fields.hasErrors('name')}">
+          <td>
+            <span data-th-errorclass="error" data-th-errors="*{name}"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>
+            <input
+              type="text"
+              placeholder="Your address here"
+              data-th-field="*{address}"
+            />
+          </td>
+        </tr>
+        <tr data-th-if="${#fields.hasErrors('address')}">
+          <td>
+            <span data-th-errorclass="error" data-th-errors="*{address}"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Phone:</td>
+          <td>
+            <input
+              type="tel"
+              placeholder="Your phone number here"
+              data-th-field="*{phoneNumber}"
+            />
+          </td>
+        </tr>
+        <tr data-th-if="${#fields.hasErrors('phoneNumber')}">
+          <td>
+            <span
+              data-th-errorclass="error"
+              data-th-errors="*{phoneNumber}"
+            ></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Rush:</td>
+          <td>
+            <input type="checkbox" data-th-field="*{rush}" />
+          </td>
+        </tr>
+        <tr>
+          <td>Comments:</td>
+          <td>
+            <textarea
+              placeholder="Your comments here"
+              rows="4"
+              cols="19"
+              data-th-field="*{comments}"
+            ></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="hidden" data-th-field="*{id}" />
+          </td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="submit" formmethod="GET" formaction="/">
+              Cancel Order
+            </button>
+            <button type="submit">Place Order</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

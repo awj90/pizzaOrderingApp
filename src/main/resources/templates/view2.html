@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View 2</title>
+  </head>
+  <body data-th-object="${order}">
+    <h1>Delivery Details</h1>
+    Order Number:
+    <a
+      data-th-href="@{/order/{orderId}(orderId=*{id})}"
+      data-th-text="*{id}"
+    ></a
+    ><br /><br />
+    Your order will be delivered to <span data-th-text="*{address}"></span>
+    <br /><br />
+    Pizza cost: $
+    <span
+      data-th-text="*{#numbers.formatDecimal(pizzaCost,1,2,'DEFAULT')}"
+    ></span>
+    <br /><br />
+    <div data-th-if="*{rush}">
+      Rush: $
+      <span
+        data-th-text="*{#numbers.formatDecimal(rushCost,1,2,'DEFAULT')}"
+      ></span>
+      <br /><br />
+    </div>
+    Total cost: $
+    <span
+      data-th-text="*{#numbers.formatDecimal(totalCost,1,2,'DEFAULT')}"
+    ></span>
+    <br /><br />
+    <a href="/">Make another order</a>
+  </body>
+</html>
